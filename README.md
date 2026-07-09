@@ -70,16 +70,44 @@ Características implementadas:
 
 # 📂 Funcionalidades
 
+## ✅ Infraestructura
 
 - [x] Arquitectura base
 - [x] Feature-Based Architecture
+- [x] Layouts (MainLayout y AuthLayout)
+- [x] Standalone Components
+- [x] Lazy Loading
+- [x] Route Configuration
+
+---
+
+## 🔐 Autenticación
+
 - [x] AuthService
 - [x] Session Management
-- [x] Route Configuration
-- [ ] Auth Guard
-- [ ] Login
-- [ ] Reactive Forms
+- [x] Auth Guard
+- [x] No Auth Guard
+- [x] Login
+- [x] Reactive Forms
 - [ ] HTTP Interceptor
+
+---
+
+## 🏥 Features
+
+- [ ] Dashboard
+- [ ] Patients
+- [ ] Doctors
+- [ ] Appointments
+
+---
+
+## 🎨 UI
+
+- [ ] Navbar
+- [ ] Sidebar
+- [ ] Shared Components
+- [ ] Responsive Layout
 
 ---
 
@@ -138,4 +166,3 @@ https://www.linkedin.com/in/carolina-ñañez-valencia
 GitHub:
 
 https://github.com/Carolinavalencia93
-
