@@ -1,59 +1,142 @@
-# MedScheduler
+# 🏥 Med Scheduler
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.17.
+Aplicación web desarrollada con **Angular 21** para la gestión de citas médicas.
 
-## Development server
+Este proyecto hace parte de mi portafolio profesional y está siendo construido siguiendo principios de **arquitectura limpia**, **buenas prácticas** y **escalabilidad**, simulando un entorno de desarrollo real.
 
-To start a local development server, run:
+---
+
+# 🚀 Tecnologías
+
+- Angular 21
+- TypeScript
+- RxJS
+- Angular Router
+- Reactive Forms
+- SCSS
+- Angular Material
+
+---
+
+# 🏛 Arquitectura
+
+El proyecto está organizado utilizando una arquitectura **Feature-Based**, donde cada módulo del negocio es independiente y escalable.
+
+```text
+src/app
+│
+├── core
+│   ├── guards
+│   ├── interceptors
+│   ├── services
+│   └── models
+│
+├── features
+│   ├── auth
+│   ├── dashboard
+│   ├── patients
+│   ├── doctors
+│   ├── appointments
+│   ├── provider
+│   ├── purchaser
+│   └── cedi
+│
+├── shared
+│
+└── app.routes.ts
+```
+
+---
+
+# 🔐 Autenticación
+
+La autenticación fue diseñada utilizando:
+
+- JWT
+- Route Guards
+- Session Management
+- BehaviorSubject
+- Lazy Loading
+
+Características implementadas:
+
+- Inicio de sesión
+- Persistencia de sesión
+- Restauración de sesión
+- Cierre de sesión
+- Protección de rutas
+
+---
+
+# 📂 Funcionalidades
+
+## Sprint 1
+
+- [x] Arquitectura base
+- [x] Feature-Based Architecture
+- [x] AuthService
+- [x] Session Management
+- [x] Route Configuration
+- [ ] Auth Guard
+- [ ] Login
+- [ ] Reactive Forms
+- [ ] HTTP Interceptor
+
+---
+
+# 📈 Objetivo del proyecto
+
+Más que construir una aplicación funcional, el objetivo es desarrollar un proyecto siguiendo prácticas utilizadas en equipos de desarrollo profesionales:
+
+- Clean Code
+- SOLID
+- Arquitectura escalable
+- Organización por Features
+- Lazy Loading
+- Buenas prácticas con RxJS
+- Componentes Standalone
+
+---
+
+# ⚙️ Instalación
+
+```bash
+git clone https://github.com/Carolinavalencia93/med-scheduler.git
+```
+
+```bash
+cd med-scheduler
+```
+
+```bash
+npm install
+```
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+# 📌 Estado del proyecto
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+🚧 En desarrollo.
 
-```bash
-ng generate component component-name
-```
+Actualmente se encuentra en construcción y continuará creciendo con nuevas funcionalidades.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+# 👩‍💻 Autora
 
-## Building
+**Carolina Ñañez Valencia**
 
-To build the project run:
+Ingeniera Informática
 
-```bash
-ng build
-```
+LinkedIn:
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+https://www.linkedin.com/in/carolina-ñañez-valencia
 
-## Running unit tests
+GitHub:
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+https://github.com/Carolinavalencia93
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
