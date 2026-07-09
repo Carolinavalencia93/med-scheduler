@@ -70,7 +70,6 @@ Características implementadas:
 
 # 📂 Funcionalidades
 
-## Sprint 1
 
 - [x] Arquitectura base
 - [x] Feature-Based Architecture
