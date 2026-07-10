@@ -1,4 +1,4 @@
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, delay, Observable, of, tap, throwError } from 'rxjs';
 import { LoginResponse } from '../models/login-response.model';
 import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { User } from '../models/user.model';
@@ -24,13 +24,28 @@ export class AuthService {
   currentUser$ = this.currentUserSubject.asObservable();
 
   login(request: LoginRequest): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>('URL_DEL_LOGIN', request).pipe(
-      tap((loginResponse) => {
-        this.saveToken(loginResponse.token);
+    if (request.email === 'admin@medscheduler.com' && request.password === '123456') {
+      const response: LoginResponse = {
+        token: 'mock-token',
+        refreshToken: 'mock-refresh-token',
+        user: {
+          id: 1,
+          correo: request.email,
+          nombreCompleto: 'Carolina Ñañez',
+          proveedorId: null,
+          rol: 'Administrador',
+        },
+      };
 
-        this.saveUser(loginResponse.user);
-      }),
-    );
+      return of(response).pipe(
+        delay(1000),
+        tap((loginResponse) => {
+          this.saveToken(loginResponse.token);
+          this.saveUser(loginResponse.user);
+        }),
+      );
+    }
+    return throwError(() => new Error('Correo o contraseña incorrectos.'));
   }
 
   private saveToken(token: string): void {
