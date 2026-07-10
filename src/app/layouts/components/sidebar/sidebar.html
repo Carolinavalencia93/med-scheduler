@@ -1,1 +1,15 @@
-<p>sidebar works!</p>
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>🏥 Med Scheduler</h2>
+  </div>
+
+  <nav class="sidebar-menu">
+    @for (item of menuItems; track item.route) {
+      <a [routerLink]="item.route" routerLinkActive="active" class="menu-item">
+        <span>{{ item.icon }}</span>
+
+        <span>{{ item.label }}</span>
+      </a>
+    }
+  </nav>
+</aside>

@@ -2,7 +2,15 @@
 
 Aplicación web desarrollada con **Angular 21** para la gestión de citas médicas.
 
-Este proyecto hace parte de mi portafolio profesional y está siendo construido siguiendo principios de **arquitectura limpia**, **buenas prácticas** y **escalabilidad**, simulando un entorno de desarrollo real.
+Este proyecto hace parte de mi portafolio profesional y está siendo construido siguiendo principios de **Clean Code**, **SOLID**, **Feature-Based Architecture** y **Componentes Standalone**, simulando el desarrollo de una aplicación empresarial desde cero.
+
+> 🚧 Proyecto en desarrollo.
+
+---
+
+# 📸 Vista previa
+
+> Próximamente se agregarán capturas de pantalla del Login, Dashboard y los diferentes módulos de la aplicación.
 
 ---
 
@@ -13,14 +21,17 @@ Este proyecto hace parte de mi portafolio profesional y está siendo construido 
 - RxJS
 - Angular Router
 - Reactive Forms
-- SCSS
 - Angular Material
+- SCSS
+- HTML5
+- CSS Grid
+- Flexbox
 
 ---
 
 # 🏛 Arquitectura
 
-El proyecto está organizado utilizando una arquitectura **Feature-Based**, donde cada módulo del negocio es independiente y escalable.
+El proyecto utiliza una arquitectura **Feature-Based**, donde cada módulo del negocio es independiente y escalable.
 
 ```text
 src/app
@@ -28,18 +39,22 @@ src/app
 ├── core
 │   ├── guards
 │   ├── interceptors
-│   ├── services
-│   └── models
+│   ├── models
+│   └── services
 │
 ├── features
 │   ├── auth
 │   ├── dashboard
-│   ├── patients
 │   ├── doctors
+│   ├── patients
 │   ├── appointments
 │   ├── provider
 │   ├── purchaser
 │   └── cedi
+│
+├── layouts
+│   ├── auth-layout
+│   └── main-layout
 │
 ├── shared
 │
@@ -48,23 +63,41 @@ src/app
 
 ---
 
+# 🧠 Principios aplicados
+
+Durante el desarrollo se están aplicando buenas prácticas como:
+
+- Clean Code
+- SOLID
+- Componentes Standalone
+- Feature-Based Architecture
+- Lazy Loading
+- Session Management
+- Reactive Programming con RxJS
+- Separación de responsabilidades
+- Componentes reutilizables
+- Diseño escalable
+
+---
+
 # 🔐 Autenticación
 
 La autenticación fue diseñada utilizando:
 
 - JWT
-- Route Guards
 - Session Management
 - BehaviorSubject
+- Route Guards
 - Lazy Loading
 
-Características implementadas:
+Actualmente incluye:
 
-- Inicio de sesión
-- Persistencia de sesión
-- Restauración de sesión
-- Cierre de sesión
-- Protección de rutas
+- ✅ Inicio de sesión
+- ✅ Persistencia de sesión
+- ✅ Restauración de sesión
+- ✅ Cierre de sesión
+- ✅ Protección de rutas
+- 🚧 HTTP Interceptor (Próximamente)
 
 ---
 
@@ -72,76 +105,155 @@ Características implementadas:
 
 ## ✅ Infraestructura
 
-- [x] Arquitectura base
+- [x] Arquitectura Base
 - [x] Feature-Based Architecture
-- [x] Layouts (MainLayout y AuthLayout)
 - [x] Standalone Components
 - [x] Lazy Loading
 - [x] Route Configuration
+- [x] Main Layout
+- [x] Auth Layout
 
 ---
 
 ## 🔐 Autenticación
 
 - [x] AuthService
+- [x] Login
 - [x] Session Management
 - [x] Auth Guard
 - [x] No Auth Guard
-- [x] Login
 - [x] Reactive Forms
+- [x] Validaciones
 - [ ] HTTP Interceptor
 
 ---
 
-## 🏥 Features
+## 🎨 Interfaz de Usuario
 
-- [ ] Dashboard
-- [ ] Patients
-- [ ] Doctors
-- [ ] Appointments
-
----
-
-## 🎨 UI
-
-- [ ] Navbar
-- [ ] Sidebar
-- [ ] Shared Components
+- [x] Login
+- [x] Navbar
+- [x] Sidebar
+- [x] Dashboard
 - [ ] Responsive Layout
+- [ ] Shared Components
 
 ---
 
-# 📈 Objetivo del proyecto
+## 🏥 Módulos del sistema
 
-Más que construir una aplicación funcional, el objetivo es desarrollar un proyecto siguiendo prácticas utilizadas en equipos de desarrollo profesionales:
+- [x] Dashboard
+- [ ] Doctors
+- [ ] Patients
+- [ ] Appointments
+- [ ] Providers
+- [ ] Purchasers
+- [ ] CEDI
 
-- Clean Code
-- SOLID
-- Arquitectura escalable
-- Organización por Features
-- Lazy Loading
-- Buenas prácticas con RxJS
-- Componentes Standalone
+---
+
+# 🛣 Roadmap
+
+## Sprint 1
+
+- ✅ Arquitectura
+- ✅ Autenticación
+- ✅ Layout principal
+- ✅ Dashboard inicial
+
+## Sprint 2
+
+- ⏳ Gestión de Médicos
+
+## Sprint 3
+
+- ⏳ Gestión de Pacientes
+
+## Sprint 4
+
+- ⏳ Gestión de Citas
+
+## Sprint 5
+
+- ⏳ Interceptor HTTP
+- ⏳ Manejo global de errores
+- ⏳ Componentes reutilizables
+- ⏳ Responsive Design
+
+---
+
+# 🏗 Flujo de la aplicación
+
+```text
+Login
+    │
+    ▼
+Auth Guard
+    │
+    ▼
+Main Layout
+    │
+ ┌──┴───────────────┐
+ │                  │
+ ▼                  ▼
+Sidebar         Navbar
+ │                  │
+ └────────┬─────────┘
+          ▼
+      Dashboard
+          │
+          ▼
+       Features
+```
 
 ---
 
 # ⚙️ Instalación
 
+Clonar el repositorio
+
 ```bash
 git clone https://github.com/Carolinavalencia93/med-scheduler.git
 ```
+
+Ingresar al proyecto
 
 ```bash
 cd med-scheduler
 ```
 
+Instalar dependencias
+
 ```bash
 npm install
 ```
 
+Ejecutar el proyecto
+
 ```bash
 ng serve
 ```
+
+Abrir en el navegador
+
+```text
+http://localhost:4200
+```
+
+---
+
+# 💡 Objetivo del proyecto
+
+El propósito de este proyecto no es únicamente desarrollar una aplicación funcional, sino construir una solución con una arquitectura mantenible y escalable, aplicando prácticas utilizadas en proyectos empresariales reales.
+
+Durante el desarrollo se priorizan aspectos como:
+
+- Arquitectura limpia
+- Escalabilidad
+- Organización por Features
+- Componentes reutilizables
+- Buenas prácticas con RxJS
+- Mantenibilidad
+- Separación de responsabilidades
 
 ---
 
@@ -149,7 +261,7 @@ ng serve
 
 🚧 En desarrollo.
 
-Actualmente se encuentra en construcción y continuará creciendo con nuevas funcionalidades.
+Actualmente el proyecto cuenta con autenticación, gestión de sesión, layout principal y un dashboard inicial. Continuará creciendo con nuevos módulos y funcionalidades.
 
 ---
 
@@ -159,10 +271,10 @@ Actualmente se encuentra en construcción y continuará creciendo con nuevas fun
 
 Ingeniera Informática
 
-LinkedIn:
+### LinkedIn
 
 https://www.linkedin.com/in/carolina-ñañez-valencia
 
-GitHub:
+### GitHub
 
 https://github.com/Carolinavalencia93

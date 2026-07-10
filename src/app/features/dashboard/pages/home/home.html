@@ -1,3 +1,54 @@
-<h1>Bienvenido</h1>
+@if (summary$ | async; as summary) {
+  <section class="dashboard">
+    <div class="welcome">
+      <h1>Buenos días 👋</h1>
+      <p>Bienvenido nuevamente a Med Scheduler.</p>
+    </div>
 
-<p>Med Scheduler</p>
+    <div class="cards">
+      <article class="card">
+        <h3>
+          <mat-icon>calendar_month</mat-icon>
+          Citas de hoy
+        </h3>
+
+        <span class="value">
+          {{ summary.citasHoy }}
+        </span>
+      </article>
+
+      <article class="card">
+        <h3>
+          <mat-icon>groups</mat-icon>
+          Pacientes
+        </h3>
+
+        <span class="value">
+          {{ summary.pacientesHoy }}
+        </span>
+      </article>
+
+      <article class="card">
+        <h3>
+          <mat-icon>medical_services</mat-icon>
+          Médicos activos
+        </h3>
+
+        <span class="value">
+          {{ summary.medicosActivos }}
+        </span>
+      </article>
+
+      <article class="card">
+        <h3>
+          <mat-icon>schedule</mat-icon>
+          Próxima consulta
+        </h3>
+
+        <span class="value">
+          {{ summary.proximaConsulta }}
+        </span>
+      </article>
+    </div>
+  </section>
+}
