@@ -1,5 +1,11 @@
-<header>Navbar</header>
+<div class="layout">
+  <app-sidebar />
 
-<main>
-  <router-outlet></router-outlet>
-</main>
+  <section class="content">
+    <app-navbar />
+
+    <main>
+      <router-outlet />
+    </main>
+  </section>
+</div>
