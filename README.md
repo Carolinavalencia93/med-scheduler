@@ -152,9 +152,6 @@ Actualmente incluye:
 ---
 
 
-
----
-
 # ⚙️ Instalación
 
 Clonar el repositorio
