@@ -19,7 +19,7 @@ export class SidebarComponent {
     {
       label: 'Médicos',
       icon: '👨‍⚕️',
-      route: '/medicos',
+      route: '/doctors',
     },
     {
       label: 'Pacientes',

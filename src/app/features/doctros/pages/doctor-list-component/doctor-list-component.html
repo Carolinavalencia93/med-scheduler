@@ -1,0 +1,51 @@
+@if (doctors$ | async; as doctors) {
+  <section class="doctor-list">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Médicos</h1>
+
+        <p class="page-subtitle">Gestiona los médicos registrados.</p>
+      </div>
+    </div>
+
+    <div class="filters">
+      <app-search-input-component placeholder="Buscar médico"> </app-search-input-component>
+
+      <app-button label="Nuevo médico" icon="add" (clicked)="openCreateDoctor()"> </app-button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+
+          <th>Especialidad</th>
+
+          <th>Estado</th>
+
+          <th>Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (doctor of doctors; track doctor.id) {
+          <tr>
+            <td>{{ doctor.nombreCompleto }}</td>
+
+            <td>{{ doctor.especialidad }}</td>
+
+            <td>{{ doctor.estado }}</td>
+
+            <td>
+              <mat-icon>visibility</mat-icon>
+
+              <mat-icon>edit</mat-icon>
+
+              <mat-icon>delete</mat-icon>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </section>
+}

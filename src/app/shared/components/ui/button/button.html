@@ -1,0 +1,15 @@
+<button
+  mat-flat-button
+  [color]="color()"
+  [disabled]="disabled() || loading()"
+  [type]="type()"
+  (click)="handleClick()"
+>
+  @if (icon()) {
+    <mat-icon>{{ icon() }}</mat-icon>
+  }
+
+  <span class="button-label">
+    {{ loading() ? 'Cargando...' : label() }}
+  </span>
+</button>

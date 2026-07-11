@@ -1,0 +1,25 @@
+button {
+  height: 44px;
+  min-width: 180px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  padding: 0 1.25rem;
+
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+
+.button-label {
+  white-space: nowrap;
+}
+
+mat-icon {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  flex-shrink: 0;
+}

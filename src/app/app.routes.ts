@@ -24,6 +24,11 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./features/dashboard/dashboard.routes').then((m) => m.DASHBOARD_ROUTES),
       },
+      {
+        path: 'doctors',
+        loadChildren: () =>
+          import('./features/doctros/doctors.routes').then((m) => m.DOCTORS_ROUTES),
+      },
     ],
   },
   {
