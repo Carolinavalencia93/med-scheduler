@@ -42,3 +42,25 @@ tbody tr:hover {
 mat-form-field {
   width: 350px;
 }
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.actions {
+  align-items: center;
+  gap: 12px;
+}
+
+.action-icon {
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: var(--transition);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}

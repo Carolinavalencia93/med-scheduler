@@ -10,6 +10,10 @@
   --color-error: #dc2626;
   --color-success: #16a34a;
 
+  --color-primary-light: #eff6ff;
+  --color-border-hover: #9ca3af;
+  --color-border-focus: var(--color-primary);
+
   /* Radius */
   --radius-sm: 4px;
   --radius-md: 12px;
@@ -17,6 +21,7 @@
 
   /* Shadow */
   --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --shadow-dropdown: 0 12px 32px rgba(15, 23, 42, 0.12);
 
   /* Transition */
   --transition: 0.25s ease;

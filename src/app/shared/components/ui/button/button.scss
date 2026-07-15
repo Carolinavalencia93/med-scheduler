@@ -1,16 +1,61 @@
-button {
+.button {
   height: 44px;
-  min-width: 180px;
-
+  min-width: 120px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-
   padding: 0 1.25rem;
-
+  border: 1px solid transparent;
   border-radius: var(--radius-sm);
+  font-size: 0.95rem;
   font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  outline: none;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.primary {
+  background: var(--color-primary);
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: var(--color-primary-hover);
+  }
+}
+
+.secondary {
+  background: var(--color-surface);
+  color: var(--color-text);
+
+  border-color: var(--color-border);
+
+  &:hover:not(:disabled) {
+    background: var(--color-background);
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-primary);
+
+  &:hover:not(:disabled) {
+    background: rgba(37, 99, 235, 0.08);
+  }
+}
+
+.danger {
+  background: var(--color-error);
+  color: white;
+
+  &:hover:not(:disabled) {
+    filter: brightness(0.95);
+  }
 }
 
 .button-label {
@@ -21,5 +66,8 @@ mat-icon {
   width: 20px;
   height: 20px;
   font-size: 20px;
-  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

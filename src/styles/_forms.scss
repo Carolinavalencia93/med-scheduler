@@ -1,0 +1,18 @@
+.form-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.required {
+  color: var(--color-error);
+}
+
+.form-error {
+  font-size: 0.85rem;
+  color: var(--color-error);
+}
+
+.form-control {
+  width: 100%;
+}

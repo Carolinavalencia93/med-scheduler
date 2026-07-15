@@ -1,9 +1,6 @@
-export interface Doctor {
+export interface UpdateDoctorRequest {
   id: number;
   nombreCompleto: string;
-
   especialidadId: number;
-  especialidad: string;
-
   estado: 'Activo' | 'Inactivo';
 }

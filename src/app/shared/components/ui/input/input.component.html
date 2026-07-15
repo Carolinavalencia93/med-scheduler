@@ -1,0 +1,27 @@
+<div class="input-container">
+  @if (label()) {
+    <span class="form-label">
+      {{ label() }}
+
+      @if (required()) {
+        <span class="required">*</span>
+      }
+    </span>
+  }
+
+  <input
+    class="input-field"
+    [type]="type()"
+    [value]="value()"
+    [placeholder]="placeholder()"
+    [disabled]="disabled()"
+    (input)="onInput($event)"
+    (blur)="onBlur()"
+  />
+
+  @if (error()) {
+    <small class="input-error">
+      {{ error() }}
+    </small>
+  }
+</div>

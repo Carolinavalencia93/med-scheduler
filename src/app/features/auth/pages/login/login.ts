@@ -4,11 +4,12 @@ import { LoginRequest } from '../../models/login-request.model';
 import { AuthService } from '../../services/AuthService';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
+import { InputComponent } from '../../../../shared/components/ui/input/input.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, InputComponent],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
@@ -26,8 +27,8 @@ export class Login implements OnInit {
 
   private createForm(): void {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      email: ['admin@medscheduler.com', [Validators.required, Validators.email]],
+      password: ['123456', Validators.required],
     });
   }
 

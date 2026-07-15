@@ -1,64 +1,91 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { toSignal } from '@angular/core/rxjs-interop';
 
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { SpecialtyService } from '../../../catalog/services/specialty.service';
-import { AsyncPipe } from '@angular/common';
+import { Doctor } from '../../models/doctor.model';
+
 import { ButtonComponent } from '../../../../shared/components/ui/button/button';
+import { InputComponent } from '../../../../shared/components/ui/input/input.component';
+import { SelectComponent } from '../../../../shared/components/ui/select/select.component';
 
 @Component({
   selector: 'app-doctor-form-dialog',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-    AsyncPipe,
-    ButtonComponent,
-  ],
+  imports: [ReactiveFormsModule, MatDialogModule, ButtonComponent, InputComponent, SelectComponent],
   templateUrl: './doctor-form-dialog.html',
   styleUrl: './doctor-form-dialog.scss',
 })
-export class DoctorFormDialogComponent {
-  isEditMode = false;
-  private fb = inject(FormBuilder);
-  private specialtyService = inject(SpecialtyService);
-  private dialogRef = inject(MatDialogRef<DoctorFormDialogComponent>);
+export class DoctorFormDialogComponent implements OnInit {
+  private readonly fb = inject(FormBuilder);
 
-  specialties$ = this.specialtyService.getSpecialties();
+  private readonly specialtyService = inject(SpecialtyService);
 
-  doctorForm = this.fb.group({
+  readonly dialogRef = inject(MatDialogRef<DoctorFormDialogComponent>);
+
+  readonly doctor = signal<Doctor | null>(
+    inject<Doctor | null>(MAT_DIALOG_DATA, {
+      optional: true,
+    }),
+  );
+
+  readonly isEditMode = computed(() => this.doctor() !== null);
+
+  readonly specialties = toSignal(this.specialtyService.getSpecialties(), {
+    initialValue: [],
+  });
+
+  readonly specialtyOptions = computed(() =>
+    this.specialties().map((specialty) => ({
+      label: specialty.nombre,
+      value: specialty.id,
+    })),
+  );
+
+  readonly statusOptions = [
+    {
+      label: 'Activo',
+      value: 'Activo',
+    },
+    {
+      label: 'Inactivo',
+      value: 'Inactivo',
+    },
+  ];
+
+  readonly doctorForm = this.fb.group({
+    id: [0],
     nombreCompleto: ['', Validators.required],
-    especialidadId: [null, Validators.required],
+    especialidadId: [null as number | null, Validators.required],
     estado: ['Activo', Validators.required],
   });
 
-  get nombreCompleto() {
-    return this.doctorForm.controls.nombreCompleto;
-  }
+  ngOnInit(): void {
+    const doctor = this.doctor();
 
-  get especialidadId() {
-    return this.doctorForm.controls.especialidadId;
-  }
+    if (!doctor) {
+      return;
+    }
 
-  get estado() {
-    return this.doctorForm.controls.estado;
+    this.doctorForm.patchValue({
+      id: doctor.id,
+      nombreCompleto: doctor.nombreCompleto,
+      especialidadId: doctor.especialidadId,
+      estado: doctor.estado,
+    });
   }
 
   save(): void {
     if (this.doctorForm.invalid) {
       this.doctorForm.markAllAsTouched();
-
       return;
     }
 
     this.dialogRef.close(this.doctorForm.getRawValue());
+  }
+
+  close(): void {
+    this.dialogRef.close();
   }
 }

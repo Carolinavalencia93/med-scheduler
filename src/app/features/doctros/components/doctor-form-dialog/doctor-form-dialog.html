@@ -1,54 +1,39 @@
 <h2 mat-dialog-title>
-  {{ isEditMode ? 'Editar médico' : 'Nuevo médico' }}
+  {{ isEditMode() ? 'Editar médico' : 'Nuevo médico' }}
 </h2>
+
 <mat-dialog-content>
   <form [formGroup]="doctorForm">
-    <mat-form-field appearance="outline">
-      <mat-label>Nombre completo</mat-label>
+    <app-input
+      label="Nombre completo"
+      placeholder="Ingresa el nombre del médico"
+      formControlName="nombreCompleto"
+      [required]="true"
+    >
+    </app-input>
 
-      <input matInput formControlName="nombreCompleto" placeholder="Ingresa el nombre del médico" />
+    <app-select
+      label="Especialidad"
+      placeholder="Selecciona una especialidad"
+      formControlName="especialidadId"
+      [required]="true"
+      [options]="specialtyOptions()"
+    >
+    </app-select>
 
-      @if (nombreCompleto.touched && nombreCompleto.hasError('required')) {
-        <mat-error> El nombre completo es obligatorio. </mat-error>
-      }
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Especialidad</mat-label>
-
-      <mat-select formControlName="especialidadId">
-        @if (specialties$ | async; as specialties) {
-          @for (specialty of specialties; track specialty.id) {
-            <mat-option [value]="specialty.id">
-              {{ specialty.nombre }}
-            </mat-option>
-          }
-        }
-      </mat-select>
-
-      @if (especialidadId.touched && especialidadId.hasError('required')) {
-        <mat-error> Selecciona una especialidad. </mat-error>
-      }
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Estado</mat-label>
-
-      <mat-select formControlName="estado">
-        <mat-option value="Activo"> Activo </mat-option>
-
-        <mat-option value="Inactivo"> Inactivo </mat-option>
-      </mat-select>
-
-      @if (estado.touched && estado.hasError('required')) {
-        <mat-error> Selecciona un estado. </mat-error>
-      }
-    </mat-form-field>
+    <app-select label="Estado" formControlName="estado" [required]="true" [options]="statusOptions">
+    </app-select>
   </form>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <app-button label="Cancelar" variant="stroked" />
+  <app-button label="Cancelar" variant="secondary" (clicked)="close()"> </app-button>
 
-  <app-button label="Guardar" type="submit" (clicked)="save()" />
+  <app-button
+    [label]="isEditMode() ? 'Actualizar' : 'Guardar'"
+    variant="primary"
+    [disabled]="doctorForm.invalid"
+    (clicked)="save()"
+  >
+  </app-button>
 </mat-dialog-actions>

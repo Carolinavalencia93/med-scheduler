@@ -1,0 +1,87 @@
+:host {
+  display: block;
+}
+
+.select-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.required {
+  color: var(--color-error);
+}
+
+.select-button {
+  height: 48px;
+  width: 100%;
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.select-button:hover {
+  border-color: var(--color-primary);
+}
+
+.select-button:focus-visible {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.placeholder {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+mat-icon {
+  font-size: 20px;
+  color: var(--color-text-secondary);
+  transition: var(--transition);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  max-height: 146px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1000;
+}
+
+mat-dialog-content {
+  overflow: visible !important;
+}
+
+.option {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 0.9rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--color-text);
+}
+
+.option:hover {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.option:not(:last-child) {
+  border-bottom: 1px solid var(--color-border);
+}

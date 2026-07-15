@@ -1,27 +1,26 @@
 import { Component, input, output } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule],
+  imports: [MatIconModule],
   templateUrl: './button.html',
   styleUrl: './button.scss',
 })
 export class ButtonComponent {
-  label = input.required<string>();
-  icon = input<string>();
-  disabled = input(false);
-  loading = input(false);
-  type = input<'button' | 'submit'>('button');
-  variant = input<'flat' | 'stroked' | 'text'>('flat');
-  color = input<'primary' | 'accent' | 'warn'>('primary');
-  clicked = output<void>();
+  readonly label = input.required<string>();
+  readonly icon = input<string>();
+  readonly disabled = input(false);
+  readonly loading = input(false);
+  readonly type = input<'button' | 'submit'>('button');
+  readonly variant = input<'primary' | 'secondary' | 'ghost' | 'danger'>('primary');
+  readonly clicked = output<void>();
 
   handleClick(): void {
-    if (!this.loading() && !this.disabled()) {
-      this.clicked.emit();
+    if (this.disabled() || this.loading()) {
+      return;
     }
+    this.clicked.emit();
   }
 }
